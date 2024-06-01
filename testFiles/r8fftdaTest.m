@@ -2,7 +2,7 @@
 totalRMSE = 0;
 errSqrMat = zeros(1,10000);
 load('LUTofDot8.mat');
-testCycle = 1000;
+testCycle = 10000;
 
 for cycle = 1:testCycle
     
