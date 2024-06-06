@@ -1,8 +1,8 @@
     %%构造r8fftda用到的查值表。对k从0到7都要构造,分cos和sin两个矩阵。这里的k是FFT(x)的序号，X(k)
     %%每行对应一个k
     %%查值时，按(b3n,b2n,b1n,b0n)_2的十进制值查询k行的对应位置元素。
-    cosLUTk = zeros(8,32);
-    sinLUTk = zeros(8,32);
+    cosLUTk = zeros(8,16);
+    sinLUTk = zeros(8,16);
     %%前16列用于Z_n1
     for k = 1:8
         %%so-called A in book
