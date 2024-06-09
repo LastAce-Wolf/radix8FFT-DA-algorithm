@@ -30,7 +30,6 @@ function res = r8fftdaM(x , dotMixLUTeven , dotMixLUTodd)
     xeveni = [xr(1)+xr(5) , xr(2)+xr(6) , xr(3)+xr(7) , xr(4)+xr(8) , -xi(1)-xi(5) , -xi(2)-xi(6) , -xi(3)-xi(7) , -xi(4)-xi(8)];
     xoddi = [xr(1)-xr(5) , xr(2)-xr(6) , xr(3)-xr(7) , xr(4)-xr(8) , -xi(1)+xi(5) , -xi(2)+xi(6) , -xi(3)+xi(7) , -xi(4)+xi(8)];
 
-    %%ar(1) = dot4daLUT([xr(1)+xr(5) , xr(2)+xr(6) , xr(3)+xr(7) , xr(4)+xr(8)] , dotMixLUTevenRe(1,:));
     ar(1) = dot4daLUT([xevenr(1) , xevenr(2) , xevenr(3) , xevenr(4)] , dotMixLUTevenRe(1,:));
     ai(1) = dot4daLUT([xeveni(5) , xeveni(6) , xeveni(7) , xeveni(8)] , dotMixLUTevenIm(1,:));
     ar(3) = dot4daLUT([xevenr(1) , xevenr(3) , xevenr(6) , xevenr(8)] , dotMixLUTevenRe(2,:));
