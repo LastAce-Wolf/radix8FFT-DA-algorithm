@@ -1,9 +1,10 @@
-%%用dotMixLUT计算r8fft，使用了严格意义的查值表规格，需要调用LUTofDotMix.mat
-%%运算中使用4和6点内积来计算
-%%输入1：16*16的输入序列，前八行为实部，后八行为虚部；
-%%一行的各元素为原数据二进制表示的各bit，第一个元素对应LSB。
-%%输入2,3：两个预先存储的查值表
-%%输出：1*8行向量,double
+% % 对函数的输入数据为16*16的矩阵。前八行为实部，后八行为虚部。每行都对应一个数的二进制表示。
+% 每行第一个元素为LSB，最后一个元素为MSB。  
+% % 在函数中间步骤中，由于存在一些中间量超出了int16的最值，所以在步骤中把数据的表达扩展到了17位。
+% 这里不直接用int32是因为会增大误差，约四个数量级。  
+% % binVecToDec、decToBinVec、binVecPlus和binVecRes为一些二进制运算相关的函数，用于对行向量保存的二进制数进行运算，满足二类补码规则。  
+% % Plus为求加法，Rev为求相反数（用于求减法）。  
+% % 用到的查找表仍然为LUTofDotMix.mat。
 function res = fftda(x , dotMixLUTeven , dotMixLUTodd)
     dotMixLUTevenRe = dotMixLUTeven(1:4,:);
     dotMixLUTevenIm = dotMixLUTeven(5:8,:);
