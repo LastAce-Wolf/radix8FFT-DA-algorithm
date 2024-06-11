@@ -9,12 +9,12 @@ function res = r8fftdaM(x , dotMixLUTeven , dotMixLUTodd)
     xi = zeros(1,8);
     %%reconstruct xr and xi in decimal format
     for k = 1:8
-        for n = 1:15
+        for n = 1:29
             xr(k) = xr(k) + x(k , n)*(2^(n-1));
             xi(k) = xi(k) + x(k+8 , n)*(2^(n-1));
         end
-        xr(k) = xr(k) - x(k , 16)*(2^15);
-        xi(k) = xi(k) - x(k+8 , 16)*(2^15);
+        xr(k) = xr(k) - x(k , 30)*(2^29);
+        xi(k) = xi(k) - x(k+8 , 30)*(2^29);
     end
     dotMixLUTevenRe = dotMixLUTeven(1:4,:);
     dotMixLUTevenIm = dotMixLUTeven(5:8,:);
